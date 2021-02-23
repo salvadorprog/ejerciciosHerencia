@@ -8,14 +8,16 @@ public class Cuenta {
 	final static String msg2 = "Saldo insuficiente";
 	
 	
-	public Cuenta( String numCuenta,double saldo) throws Exception {
+	public Cuenta(String numCuenta, double saldo) throws Exception {
 		super();
-		if (saldo <0) { throw new Exception (msg1);}
+		if (saldo < 0) { 
+			throw new Exception (msg1);
+			}
 		this.saldo = saldo;
 		this.numCuenta = numCuenta;
 	}
 	
-	public Cuenta( String numCuenta) {
+	public Cuenta(String numCuenta) {
 		super();
 		this.saldo = 0;
 		this.numCuenta = numCuenta;
@@ -24,8 +26,6 @@ public class Cuenta {
 	public double getSaldo() {
 		return saldo;
 	}
-	
-	
 
 	protected void setSaldo(double saldo) {
 		this.saldo = saldo;
@@ -36,16 +36,17 @@ public class Cuenta {
 	}
 	
 	public void ingreso(double cant) throws Exception{
-		if (cant < 0 ) { throw new Exception (msg1);}
-		
+		if (cant < 0 ) {
+			throw new Exception (msg1);
+			}
 		this.saldo += cant;
-		
 	}
 	
 	public void reintegro(double cant) throws Exception {
-		if (cant <= this.saldo && cant >0) {
+		if (cant <= this.saldo && cant > 0) {
 			this.saldo-=cant;
-		}else {
+		}
+		else {
 			throw new Exception (msg2);
 		}
 		
@@ -80,12 +81,4 @@ public class Cuenta {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
-	
-
 }
