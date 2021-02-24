@@ -1,5 +1,6 @@
 package Cuenta;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class MainCuentas {
@@ -19,6 +20,8 @@ public class MainCuentas {
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
+			CuentaJoven cJoven = new CuentaJoven( "23dfdsf3r", 3123.23, "Salvador", LocalDate.of(2002, 10, 8));
+			System.out.println(cJoven);
 		}
 		
 		CuentaCredito c2 = new CuentaCredito(10,"1");
@@ -33,6 +36,16 @@ public class MainCuentas {
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+		try {
+			CuentaJoven cJoven = new CuentaJoven("23dfdsf3r", 3000.00, "Salvador", LocalDate.of(2002, 10, 8));
+			System.out.print("Introduce la cantidad a ingresar: ");
+			cant = Double.parseDouble(teclado.nextLine());
+			cJoven.ingreso(cant);
+			System.out.println(cJoven.getSaldo());
+		}
+		catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 

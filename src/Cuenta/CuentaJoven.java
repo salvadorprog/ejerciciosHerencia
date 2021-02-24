@@ -10,12 +10,18 @@ public class CuentaJoven extends Cuenta {
 	
 	public CuentaJoven(String numCuenta, double saldo, String titular, LocalDate fechaNacimiento) throws Exception {
 		super(numCuenta, saldo);
+		if (!esTitularValido(fechaNacimiento)) {
+			throw new Exception (TITULAR_INCORRECTO);
+		}
 		this.titular = titular;
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public CuentaJoven(String numCuenta, String titular, LocalDate fechaNacimiento) throws Exception {
 		super(numCuenta);
+		if (!esTitularValido(fechaNacimiento)) {
+			throw new Exception (TITULAR_INCORRECTO);
+		}
 		this.titular = titular;
 		this.fechaNacimiento = fechaNacimiento;
 	}
@@ -36,7 +42,7 @@ public class CuentaJoven extends Cuenta {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
-	public boolean esTitularValido() {
+	public boolean esTitularValido(LocalDate fechaNacimiento) {
 		if ((LocalDate.now().getYear() - fechaNacimiento.getYear()) > 18 && (LocalDate.now().getYear() - fechaNacimiento.getYear()) < 25) {
 			return true;
 		}
@@ -49,9 +55,6 @@ public class CuentaJoven extends Cuenta {
 	}
 	@Override
 	public void reintegro(double cant) throws Exception {
-		if (!esTitularValido()) {
-			throw new Exception (TITULAR_INCORRECTO);
-		}
 		if (cant <= super.getSaldo() && cant > 0) {
 			super.setSaldo(super.getSaldo() - cant);
 		}
