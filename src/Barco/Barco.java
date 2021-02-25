@@ -1,41 +1,45 @@
 package Barco;
 
 public class Barco {
-	private String Matricula;
-	private Double Eslora;
-	private int Año_fabricacion;
+	protected String matricula;
+	protected Double eslora;
+	protected int anoFabricacion;
+	protected final double PRECIO_ACTUAL = 20.0;
 	
-	public Barco(String matricula, Double eslora, int año_fabricacion) {
+	public Barco(String matricula, Double eslora, int anoFabricacion) {
 		super();
-		Matricula = matricula;
-		Eslora = eslora;
-		Año_fabricacion = año_fabricacion;
+		this.matricula = matricula;
+		this.eslora = eslora;
+		this.anoFabricacion = anoFabricacion;
 	}
 
 	public String getMatricula() {
-		return Matricula;
+		return matricula;
 	}
 
 	public Double getEslora() {
-		return Eslora;
+		return eslora;
 	}
 
-	public int getAño_fabricacion() {
-		return Año_fabricacion;
+	public int getAnoFabricacion() {
+		return anoFabricacion;
+	}
+	public double getPrecio() {
+		return eslora * 10 * PRECIO_ACTUAL;
 	}
 
 	@Override
 	public String toString() {
-		return "Barco [Matricula=" + Matricula + ", Eslora=" + Eslora + ", Año_fabricacion=" + Año_fabricacion + "]";
+		return "Barco con matricula: " + matricula + ", Eslora: " + eslora + ", Año_fabricacion: " + anoFabricacion + ", precio: " + this.getPrecio();
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Año_fabricacion;
-		result = prime * result + ((Eslora == null) ? 0 : Eslora.hashCode());
-		result = prime * result + ((Matricula == null) ? 0 : Matricula.hashCode());
+		result = prime * result + anoFabricacion;
+		result = prime * result + ((eslora == null) ? 0 : eslora.hashCode());
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		return result;
 	}
 
@@ -48,17 +52,17 @@ public class Barco {
 		if (getClass() != obj.getClass())
 			return false;
 		Barco other = (Barco) obj;
-		if (Año_fabricacion != other.Año_fabricacion)
+		if (anoFabricacion != other.anoFabricacion)
 			return false;
-		if (Eslora == null) {
-			if (other.Eslora != null)
+		if (eslora == null) {
+			if (other.eslora != null)
 				return false;
-		} else if (!Eslora.equals(other.Eslora))
+		} else if (!eslora.equals(other.eslora))
 			return false;
-		if (Matricula == null) {
-			if (other.Matricula != null)
+		if (matricula == null) {
+			if (other.matricula != null)
 				return false;
-		} else if (!Matricula.equals(other.Matricula))
+		} else if (!matricula.equals(other.matricula))
 			return false;
 		return true;
 	}

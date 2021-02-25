@@ -6,20 +6,19 @@ import java.time.temporal.ChronoUnit;
 public class Alquiler {
 	private String nombre;
 	private String dni;
-	private LocalDate fecha_inicio_alquiler;
-	private LocalDate fecha_fin_alquiler;
-	private Integer posicion_amarre;
+	private LocalDate fechaInicioAlquiler;
+	private LocalDate fechaFinAlquiler;
+	private Integer posicionAmarre;
 	private Barco barco;
-	private final Double PRECIO = 20.0;
 	
-	public Alquiler(String nombre, String dni, LocalDate fecha_inicio_alquiler, LocalDate fecha_fin_alquiler,
-			Integer posicion_amarre, Barco barco) {
+	public Alquiler(String nombre, String dni, LocalDate fechaInicioAlquiler, LocalDate fechaFinAlquiler,
+			Integer posicionAmarre, Barco barco) {
 		super();
 		this.nombre = nombre;
 		this.dni = dni;
-		this.fecha_inicio_alquiler = fecha_inicio_alquiler;
-		this.fecha_fin_alquiler = fecha_fin_alquiler;
-		this.posicion_amarre = posicion_amarre;
+		this.fechaInicioAlquiler = fechaInicioAlquiler;
+		this.fechaFinAlquiler = fechaFinAlquiler;
+		this.posicionAmarre = posicionAmarre;
 		this.barco = barco;
 	}
 
@@ -31,16 +30,16 @@ public class Alquiler {
 		return dni;
 	}
 
-	public LocalDate getFecha_inicio_alquiler() {
-		return fecha_inicio_alquiler;
+	public LocalDate getFechaInicioAlquiler() {
+		return fechaInicioAlquiler;
 	}
 
-	public LocalDate getFecha_fin_alquiler() {
-		return fecha_fin_alquiler;
+	public LocalDate getFechaFinAlquiler() {
+		return fechaFinAlquiler;
 	}
 
-	public Integer getPosicion_amarre() {
-		return posicion_amarre;
+	public Integer getPosicionAmarre() {
+		return posicionAmarre;
 	}
 
 	public Barco getBarco() {
@@ -49,13 +48,13 @@ public class Alquiler {
 
 	@Override
 	public String toString() {
-		return "Alquiler [nombre=" + nombre + ", dni=" + dni + ", fecha_inicio_alquiler=" + fecha_inicio_alquiler
-				+ ", fecha_fin_alquiler=" + fecha_fin_alquiler + ", posicion_amarre=" + posicion_amarre + ", barco="
-				+ barco + ", PRECIO=" + PRECIO + "]";
+		return "Alquiler [nombre=" + nombre + ", dni=" + dni + ", fecha_inicio_alquiler=" + fechaInicioAlquiler
+				+ ", fecha_fin_alquiler=" + fechaFinAlquiler + ", posicion_amarre=" + posicionAmarre + ", barco="
+				+ barco;
 	}
 	
 	public double precio() {
-		double resultado = (ChronoUnit.DAYS.between(fecha_inicio_alquiler,fecha_fin_alquiler) + 1) * (barco.getEslora() * 10) * PRECIO;
+		double resultado = (ChronoUnit.DAYS.between(fechaInicioAlquiler,fechaFinAlquiler) + 1) * barco.getPrecio();
 		return resultado;
 	}
 }

@@ -1,29 +1,30 @@
 package Cuenta;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class CuentaJoven extends Cuenta {
 	private String titular;
 	private final double bonificacion = 0.20;
-	private final String TITULAR_INCORRECTO = "El titular es incorrecto";
+	private final String TITULARiNCORRECTO = "El titular es incorrecto";
 	private LocalDate fechaNacimiento;
 	
 	public CuentaJoven(String numCuenta, double saldo, String titular, LocalDate fechaNacimiento) throws Exception {
 		super(numCuenta, saldo);
-		if (!esTitularValido(fechaNacimiento)) {
-			throw new Exception (TITULAR_INCORRECTO);
-		}
 		this.titular = titular;
 		this.fechaNacimiento = fechaNacimiento;
+		if (!esTitularValido()) {
+			throw new Exception (TITULARiNCORRECTO);
+		}
 	}
 
 	public CuentaJoven(String numCuenta, String titular, LocalDate fechaNacimiento) throws Exception {
 		super(numCuenta);
-		if (!esTitularValido(fechaNacimiento)) {
-			throw new Exception (TITULAR_INCORRECTO);
-		}
 		this.titular = titular;
 		this.fechaNacimiento = fechaNacimiento;
+		if (!esTitularValido()) {
+			throw new Exception (TITULARiNCORRECTO);
+		}
 	}
 
 	public String getTitular() {
@@ -42,8 +43,9 @@ public class CuentaJoven extends Cuenta {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
-	public boolean esTitularValido(LocalDate fechaNacimiento) {
-		if ((LocalDate.now().getYear() - fechaNacimiento.getYear()) > 18 && (LocalDate.now().getYear() - fechaNacimiento.getYear()) < 25) {
+	public boolean esTitularValido() {
+		int años = (int) ChronoUnit.YEARS.between(this.fechaNacimiento, LocalDate.now());
+		if (años >= 18 && años < 25) {
 			return true;
 		}
 		else {
@@ -51,16 +53,7 @@ public class CuentaJoven extends Cuenta {
 		}
 	}	
 	public String toString() {
-		return "Cuenta Joven " + bonificacion;
-	}
-	@Override
-	public void reintegro(double cant) throws Exception {
-		if (cant <= super.getSaldo() && cant > 0) {
-			super.setSaldo(super.getSaldo() - cant);
-		}
-		else {
-			throw new Exception (msg2);
-		}
+		return "Cuenta Joven con bonificación: " + bonificacion + ", número de cuenta: " + super.numCuenta + ", saldo: " + super.saldo;
 	}
 	
 }

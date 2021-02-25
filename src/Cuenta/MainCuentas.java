@@ -17,11 +17,11 @@ public class MainCuentas {
 			cant = Double.parseDouble(teclado.nextLine());
 			c1.reintegro(cant);
 			System.out.println(c1);
+			CuentaJoven cJoven = new CuentaJoven("23dfdsf3r", 3123.23, "Salvador", LocalDate.of(2012, 10, 8));
+			System.out.println(cJoven);
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
-			CuentaJoven cJoven = new CuentaJoven( "23dfdsf3r", 3123.23, "Salvador", LocalDate.of(2002, 10, 8));
-			System.out.println(cJoven);
 		}
 		
 		CuentaCredito c2 = new CuentaCredito(10,"1");
@@ -42,6 +42,9 @@ public class MainCuentas {
 			System.out.print("Introduce la cantidad a ingresar: ");
 			cant = Double.parseDouble(teclado.nextLine());
 			cJoven.ingreso(cant);
+			System.out.print("Introduce la cantidad a reintegrar: ");
+			cant = Double.parseDouble(teclado.nextLine());
+			cJoven.reintegro(cant);
 			System.out.println(cJoven.getSaldo());
 		}
 		catch (Exception e) {

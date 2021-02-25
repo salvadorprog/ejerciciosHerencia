@@ -2,8 +2,8 @@ package Cuenta;
 
 public class Cuenta {
 	
-	private double saldo;
-	private String numCuenta;
+	protected double saldo;
+	protected String numCuenta;
 	final static String msg1 = "Imposible cantidad negativa";
 	final static String msg2 = "Saldo insuficiente";
 	
