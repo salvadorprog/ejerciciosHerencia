@@ -1,6 +1,6 @@
 package Barco;
 
-public class Barco {
+public abstract class Barco {
 	protected String matricula;
 	protected Double eslora;
 	protected int anoFabricacion;

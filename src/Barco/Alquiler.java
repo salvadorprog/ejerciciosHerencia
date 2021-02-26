@@ -21,6 +21,17 @@ public class Alquiler {
 		this.posicionAmarre = posicionAmarre;
 		this.barco = barco;
 	}
+	
+	public Alquiler(String nombre, String dni, LocalDate fechaFinAlquiler,
+			Integer posicionAmarre, Barco barco) {
+		super();
+		this.nombre = nombre;
+		this.dni = dni;
+		this.fechaInicioAlquiler = LocalDate.now();
+		this.fechaFinAlquiler = fechaFinAlquiler;
+		this.posicionAmarre = posicionAmarre;
+		this.barco = barco;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -45,7 +56,10 @@ public class Alquiler {
 	public Barco getBarco() {
 		return barco;
 	}
-
+	public double precioAlquiler() {
+		int dias = (int) (ChronoUnit.DAYS.between(fechaInicioAlquiler, fechaFinAlquiler) + 1);
+		return dias * barco.getPrecio();
+	}
 	@Override
 	public String toString() {
 		return "Alquiler [nombre=" + nombre + ", dni=" + dni + ", fecha_inicio_alquiler=" + fechaInicioAlquiler

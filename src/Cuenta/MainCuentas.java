@@ -38,7 +38,7 @@ public class MainCuentas {
 			System.out.println(e.getMessage());
 		}
 		try {
-			CuentaJoven cJoven = new CuentaJoven("23dfdsf3r", 3000.00, "Salvador", LocalDate.of(2002, 10, 8));
+			CuentaJoven cJoven = new CuentaJoven("CaixaBank", 3000.00, "Salvador", LocalDate.of(2002, 10, 8));						// Cuenta Joven
 			System.out.print("Introduce la cantidad a ingresar: ");
 			cant = Double.parseDouble(teclado.nextLine());
 			cJoven.ingreso(cant);
