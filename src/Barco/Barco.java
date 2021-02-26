@@ -24,9 +24,7 @@ public abstract class Barco {
 	public int getAnoFabricacion() {
 		return anoFabricacion;
 	}
-	public double getPrecio() {
-		return eslora * 10 * PRECIO_ACTUAL;
-	}
+	public abstract double getPrecio();
 
 	@Override
 	public String toString() {

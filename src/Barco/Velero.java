@@ -40,7 +40,7 @@ public class Velero extends Barco {
 	}
 	@Override
 	public double getPrecio() {
-		return super.getPrecio() + numeroMastiles;
+		return eslora * 10 * PRECIO_ACTUAL + numeroMastiles;
 	}
 	
 }

@@ -1,7 +1,7 @@
 package Barco;
 
 public class EmbarcacionDeportiva extends Barco {
-	private int cv;
+	protected int cv;
 	
 	public EmbarcacionDeportiva(String matricula, Double eslora, int anoFabricacion, int cv) {
 		super(matricula, eslora, anoFabricacion);
@@ -32,7 +32,7 @@ public class EmbarcacionDeportiva extends Barco {
 	
 	@Override
 	public double getPrecio() {
-		return super.getPrecio() + cv;
+		return eslora * 10 * PRECIO_ACTUAL + cv;
 	}
 
 	@Override

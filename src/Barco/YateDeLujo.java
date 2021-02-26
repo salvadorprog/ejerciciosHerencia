@@ -32,7 +32,7 @@ public class YateDeLujo extends EmbarcacionDeportiva {
 	
 	@Override
 	public double getPrecio() {
-		return super.getPrecio() + numeroCamarotes;
+		return eslora * 10 * PRECIO_ACTUAL + cv + numeroCamarotes;
 	}
 	
 	@Override
