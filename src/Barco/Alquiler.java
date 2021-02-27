@@ -66,9 +66,4 @@ public class Alquiler {
 				+ ", fecha_fin_alquiler=" + fechaFinAlquiler + ", posicion_amarre=" + posicionAmarre + ", barco="
 				+ barco;
 	}
-	
-	public double precio() {
-		double resultado = (ChronoUnit.DAYS.between(fechaInicioAlquiler,fechaFinAlquiler) + 1) * barco.getPrecio();
-		return resultado;
-	}
 }
