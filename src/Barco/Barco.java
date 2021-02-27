@@ -27,9 +27,7 @@ public abstract class Barco {
 	public abstract double getPrecio();
 
 	@Override
-	public String toString() {
-		return "Barco con matricula: " + matricula + ", Eslora: " + eslora + ", Año_fabricacion: " + anoFabricacion + ", precio: " + this.getPrecio();
-	}
+	public abstract String toString();
 
 	@Override
 	public int hashCode() {

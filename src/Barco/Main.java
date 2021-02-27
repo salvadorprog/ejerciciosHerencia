@@ -7,22 +7,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
+	// Mensajes y textos de la aplicación (Los más repetidos)
+	private	static final String CREAR = "Cree antes un ";
+	private static final String OPT_INCORR = "Opción incorrecta";
+	private static final String INSERTE = "Inserte "; 
+	private static final String ESTA_SEGURO = "¿Está seguro? (Y/N)>>"; 
+			 
 	public static void main(String[] args) {
 		
-		// Variables y entradas
+		// Variables, entradas y formatos de fecha
 		DateTimeFormatter fecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		StringBuilder opcion = new StringBuilder("");
 		Scanner entradaUsuario = new Scanner(System.in);
 		
 		String data[] = new String[6];
-		// Creamos el barco
+		// Creamos el barco en null
 		
 		Barco barco1 = null;
 		
-		// Creamos el alquiler
+		// Creamos el alquiler en null
 		
 		Alquiler alquiler1 = null;
+		
 		
 		// Programa
 		while(!opcion.toString().equals("exit")) {
@@ -51,38 +57,38 @@ public class Main {
 						opcion = new StringBuilder(entradaUsuario.nextLine());
 						
 						if (Integer.parseInt(opcion.toString()) < 1 && Integer.parseInt(opcion.toString()) > 3){
-							throw new Exception("Opción incorrecta"); 
+							throw new Exception(OPT_INCORR); 
 						}
 						
-						System.out.print("Inserte matricula: ");
+						System.out.print(INSERTE + "matricula: ");
 						data[0] = entradaUsuario.nextLine();
 						
-						System.out.print("Inserte medida de eslora: ");
+						System.out.print(INSERTE + "medida de eslora: ");
 						data[1] = entradaUsuario.nextLine();
 						
-						System.out.print("Inserte año de fabricación: ");
+						System.out.print(INSERTE + "año de fabricación: ");
 						data[2] = entradaUsuario.nextLine();
 						
 						switch (Integer.parseInt(opcion.toString())) {
 							case 1: {
-								System.out.print("Inserte número de mástiles: ");
+								System.out.print(INSERTE + "número de mástiles: ");
 								data[3] = entradaUsuario.nextLine();
 								
 								barco1 = new Velero(data[0],Double.parseDouble(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]));
 								break;
 							}
 							case 2: {
-								System.out.print("Inserte cv: ");
+								System.out.print(INSERTE + "cv: ");
 								data[3] = entradaUsuario.nextLine();
 								
 								barco1 = new EmbarcacionDeportiva(data[0],Double.parseDouble(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]));
 								break;
 							}
 							case 3: {
-								System.out.print("Inserte cv: ");
+								System.out.print(INSERTE + "cv: ");
 								data[3] = entradaUsuario.nextLine();
 								
-								System.out.print("Inserte numero de camarotes: ");
+								System.out.print(INSERTE + "numero de camarotes: ");
 								data[4] = entradaUsuario.nextLine();
 								
 								barco1 = new YateDeLujo(data[0],Double.parseDouble(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]),Integer.parseInt(data[4]));
@@ -92,19 +98,22 @@ public class Main {
 						break;
 					}
 					case "2": {
-						System.out.print("Inserte nombre: ");
+						if (barco1 == null) {
+							throw new Exception("Barco no definido, defina antes un barco");
+						}
+						System.out.print(INSERTE + "nombre: ");
 						data[0] = entradaUsuario.nextLine();
 						
-						System.out.print("Inserte dni: ");
+						System.out.print(INSERTE + "dni: ");
 						data[1] = entradaUsuario.nextLine();
 						
-						System.out.print("Inserte fecha inicio, formato(DD/MM/YYYY): ");
+						System.out.print(INSERTE + "fecha inicio, formato(DD/MM/YYYY): ");
 						data[2] = entradaUsuario.nextLine();
 						
-						System.out.print("Inserte fecha fin, formato(DD/MM/YYYY): ");
+						System.out.print(INSERTE + "fecha fin, formato(DD/MM/YYYY): ");
 						data[3] = entradaUsuario.nextLine();
 						
-						System.out.print("Inserte posición de amarre: ");
+						System.out.print(INSERTE + "posición de amarre: ");
 						data[4] = entradaUsuario.nextLine();
 						
 						alquiler1 = new Alquiler(data[0], data[1], LocalDate.parse(data[2],fecha),LocalDate.parse(data[3],fecha),
@@ -112,29 +121,41 @@ public class Main {
 						break;
 					}
 					case "3": {
+						if (barco1 == null) {
+							throw new Exception(CREAR + "barco");
+						}
 						System.out.println(barco1.toString());
 						break;
 					}
 					case "4": {
+						if (alquiler1 == null) {
+							throw new Exception(CREAR + "alquiler");
+						}
 						System.out.println(alquiler1.toString());
 						break;
 					}
 					case "5": {
-						System.out.println(barco1.getPrecio());
+						if (barco1 == null) {
+							throw new Exception(CREAR + "barco");
+						}
+						System.out.println(barco1.getPrecio() + "€");
 						break;
 					}
 					case "6": {
-						System.out.println(alquiler1.precioAlquiler());
+						if (alquiler1 == null) {
+							throw new Exception(CREAR + "alquiler");
+						}
+						System.out.println(alquiler1.precioAlquiler() + "€");
 						break;
 					}
 					case "7": {
-						System.out.print("¿Está seguro? (Y/N)>> ");
+						System.out.print(ESTA_SEGURO);
 						opcion = new StringBuilder(entradaUsuario.nextLine().toUpperCase());
 						opcion = new StringBuilder(opcion.toString().equals("Y")?"exit":"continue");
 						break;
 					}
 					default: {
-						throw new Exception("Opción incorrecta"); 
+						throw new Exception(OPT_INCORR); 
 					}
 				}
 			}

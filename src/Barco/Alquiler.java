@@ -62,8 +62,8 @@ public class Alquiler {
 	}
 	@Override
 	public String toString() {
-		return "Alquiler [nombre=" + nombre + ", dni=" + dni + ", fecha_inicio_alquiler=" + fechaInicioAlquiler
-				+ ", fecha_fin_alquiler=" + fechaFinAlquiler + ", posicion_amarre=" + posicionAmarre + ", barco="
+		return "Último Alquiler: Nombre: " + nombre + ", dni: " + dni + ", alquilado el: " + fechaInicioAlquiler
+				+ ", y terminado el alquiler el " + fechaFinAlquiler + " con posición de amarre: " + posicionAmarre + " y barco: "
 				+ barco;
 	}
 }

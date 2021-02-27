@@ -37,8 +37,8 @@ public class YateDeLujo extends EmbarcacionDeportiva {
 	
 	@Override
 	public String toString() {
-		return "YateDeLujo con matrícula: " + matricula + ", numero de camarotes" + numeroCamarotes + ", eslora: " + eslora
-				+ ", ano de fabricacion: " + anoFabricacion + ", y precio: " + this.getPrecio();
+		return "YateDeLujo con matrícula: " + matricula + ", numero de camarotes: " + numeroCamarotes + ", eslora: " + eslora
+				+ ", año de fabricacion: " + anoFabricacion + ", y precio: " + this.getPrecio() + "€";
 	}
 	
 	

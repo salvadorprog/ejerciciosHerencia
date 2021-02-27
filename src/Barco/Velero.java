@@ -14,7 +14,7 @@ public class Velero extends Barco {
 
 	@Override
 	public String toString() {
-		return "Velero con matricula: " + super.matricula + ", eslora: " + super.eslora + ", año de fabricación: " + super.anoFabricacion + " y número de mástiles: " + numeroMastiles + " con precio: " + this.getPrecio();
+		return "Velero con matricula: " + super.matricula + ", eslora: " + super.eslora + ", año de fabricación: " + super.anoFabricacion + " y número de mástiles: " + numeroMastiles + " con precio: " + this.getPrecio() + "€";
 	}
 
 	@Override

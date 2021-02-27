@@ -37,6 +37,6 @@ public class EmbarcacionDeportiva extends Barco {
 
 	@Override
 	public String toString() {
-		return "Embarcacion Deportiva con matrícula: " + super.matricula + ", eslora: " + super.eslora + ", año de fabricación: " + super.anoFabricacion + " y con " + cv + " caballos de potencia." + " Precio: " + this.getPrecio();
+		return "Embarcacion Deportiva con matrícula: " + super.matricula + ", eslora: " + super.eslora + ", año de fabricación: " + super.anoFabricacion + " y con " + cv + " caballos de potencia." + " Precio: " + this.getPrecio() + "€";
 	}
 }
