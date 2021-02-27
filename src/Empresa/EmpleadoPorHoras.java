@@ -42,7 +42,7 @@ public class EmpleadoPorHoras extends Empleado {
 
 	@Override
 	public String toString() {
-		return "EmpleadoPorHoras [horasTrabajadas=" + horasTrabajadas + "]";
+		return "Empleado por horas con nombre: " + nombre + ", dni: " + nif + ", horas trabajadas: " + horasTrabajadas + ", sueldo: " + calcularSueldo() + "€";
 	}
 
 	public Integer getHorasTrabajadas() {
@@ -56,6 +56,4 @@ public class EmpleadoPorHoras extends Empleado {
 	public static Double getPrecioHoraTrabajada() {
 		return PRECIO_HORA_TRABAJADA;
 	}
-	
-	
 }

@@ -59,7 +59,7 @@ public class EmpleadoFijo extends Empleado {
 
 	@Override
 	public String toString() {
-		return "EmpleadoFijo [añoAlta=" + añoAlta + "]";
+		return "Empleado Fijo con nombre: " + nombre + ", dni: " + nif + ", año de alta: " + añoAlta + ", sueldo: " + calcularSueldo() + "€";
 	}
 	
 }

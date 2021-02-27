@@ -67,7 +67,7 @@ public class EmpleadoTemporal extends Empleado {
 
 	@Override
 	public String toString() {
-		return "EmpleadoTemporal [fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + "]";
+		return "Empleado temporal con nombre: " + nombre + ", dni: " + nif + ", fecha de alta: " + fechaAlta + ", fecha de baja: " + fechaBaja + ", sueldo: " + calcularSueldo() + "€";
 	}
 	
 }
