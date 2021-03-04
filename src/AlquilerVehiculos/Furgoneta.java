@@ -5,8 +5,9 @@ public class Furgoneta extends Vehiculo {
 	
 	private double pma;
 	
-	public Furgoneta(String matricula, String gama, String tipoCarburante) {
+	public Furgoneta(String matricula, String gama, String tipoCarburante, double pma) {
 		super(matricula, gama, tipoCarburante);
+		this.pma = pma;
 	}
 	
 	@Override
