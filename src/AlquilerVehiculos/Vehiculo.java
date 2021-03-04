@@ -46,7 +46,7 @@ public abstract class Vehiculo {
 	}
 	
 	public Double precioGama() {
-		switch(gama.toUpperCase()) {
+		switch(gama) {
 			case "BAJA": {
 				return PRECIO_GAMA_BAJA;
 			}
@@ -74,4 +74,5 @@ public abstract class Vehiculo {
 	public void setTipoCarburante(String tipoCarburante) {
 		this.tipoCarburante = tipoCarburante;
 	}
+	
 }

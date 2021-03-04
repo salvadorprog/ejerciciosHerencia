@@ -7,7 +7,6 @@ public class Furgoneta extends Vehiculo {
 	
 	public Furgoneta(String matricula, String gama, String tipoCarburante) {
 		super(matricula, gama, tipoCarburante);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -23,5 +22,4 @@ public class Furgoneta extends Vehiculo {
 		return "Furgoneta [pma=" + pma + ", matricula=" + matricula + ", gama=" + gama + ", tipoCarburante="
 				+ tipoCarburante + ", precioDia()=" + precioDia() + "]";
 	}
-	
 }
