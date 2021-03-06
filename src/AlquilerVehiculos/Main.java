@@ -1,23 +1,30 @@
 package AlquilerVehiculos;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
-	private final static int NUMERO_DE_COCHES_MAXIMO = 200; 
+	private final static int NUMERO_DE_COCHES_MAXIMO = 200;
+	private final static int NUMERO_DE_ALQUILERES_MAXIMO = 200; 
+	
 	public static void main(String[] args) {
 		Vehiculo[] vehiculos = new Vehiculo[NUMERO_DE_COCHES_MAXIMO];
+		Alquiler[] alquileres = new Alquiler[NUMERO_DE_ALQUILERES_MAXIMO];
 		
 		Integer numeroVehiculos = 0;
+		Integer numeroAlquileres = 0;
 		
-		String[] Datos = new String[5];
+		String[] Datos = new String[6];
 		String opcion = "";
 		Scanner entradaUsuario = new Scanner(System.in); 
 		
 		while (!opcion.equals("S")) {
 			try {
-				System.out.println("\n 1. Alta de un vehículo"
-				         + "\n 2. Cálculo de precio de alquiler"
-						 + "\n 3. Salir"
+				System.out.println(
+						   "\n 1. Alta de un vehículo"
+				         + "\n 2. Alquilar vehículo"
+						 + "\n 3. Consultar alquiler"
+						 + "\n 4. Salir"
 				         );
 				System.out.print("Seleccione opción >>> ");
 				opcion = entradaUsuario.nextLine();
@@ -68,14 +75,29 @@ public class Main {
 						break;
 					}
 					case 2: {
-						System.out.print("Indique la matrícula del vehículo >>> ");
+						System.out.print("Inserte su nombre >>> ");
 						Datos[0] = entradaUsuario.nextLine();
-						System.out.print("Indique número de días de alquiler >>> ");
+						System.out.print("Inserte sus apellidos >>> ");
 						Datos[1] = entradaUsuario.nextLine();
-						System.out.println(precioVehiculo(Datos[0], vehiculos, Integer.parseInt(Datos[1])) + "€");
+						System.out.print("Inserte la fecha de inicio (Formato: YYYY-MM-DD) >>> ");
+						Datos[2] = entradaUsuario.nextLine();
+						System.out.print("Inserte la fecha de fin (Formato: YYYY-MM-DD) >>> ");
+						Datos[3] = entradaUsuario.nextLine();
+						System.out.print("Inserte su número de teléfono >>> ");
+						Datos[4] = entradaUsuario.nextLine();
+						System.out.print("Inserte la matrícula del vehículo >>> ");
+						Datos[5] = entradaUsuario.nextLine();
+						alquileres[numeroAlquileres] = new Alquiler(Datos[0], Datos[1], LocalDate.parse(Datos[2]), LocalDate.parse(Datos[3]), Datos[4], vehiculos[encontrarVehiculo(Datos[5],vehiculos)]);
+						numeroAlquileres++;
 						break;
 					}
 					case 3: {
+						System.out.print("Indique la matrícula del vehículo >>> ");
+						Datos[0] = entradaUsuario.nextLine();
+						System.out.println(alquileres[encontrarAlquiler(Datos[0], alquileres)]);
+						break;
+					}
+					case 4: {
 						System.out.print("¿Está seguro? (S/N) >>> ");
 						opcion = entradaUsuario.nextLine().toUpperCase();
 
@@ -92,12 +114,11 @@ public class Main {
 		}
 		
 	}
-	public static double precioVehiculo(String matricula, Vehiculo vehiculos[], int dias) throws Exception {
+	public static int encontrarVehiculo(String matricula, Vehiculo vehiculos[]) throws Exception {
 		int posicion = 0;
-		double resultado = 0.0;
-		while (posicion < vehiculos.length && resultado == 0.0) {
+		while (posicion < vehiculos.length) {
 			if (!(vehiculos[posicion] == null) && vehiculos[posicion].getMatricula().equals(matricula)) {
-				resultado = vehiculos[posicion].precioDia() * dias;
+				return posicion;
 			}
 			else {
 				posicion++;
@@ -106,6 +127,21 @@ public class Main {
 		if (posicion == vehiculos.length) {
 			throw new Exception("El vehículo no existe");
 		}
-		return resultado;
+		return posicion;
+	}
+	public static int encontrarAlquiler(String matricula, Alquiler alquileres[]) throws Exception {
+		int posicion = 0;
+		while (posicion < alquileres.length) {
+			if (!(alquileres[posicion] == null) && alquileres[posicion].getVehiculo().getMatricula().equals(matricula)) {
+				return posicion;
+			}
+			else {
+				posicion++;
+			}
+		}
+		if (posicion == alquileres.length) {
+			throw new Exception("El vehículo proporcionado no pertenece a ningún alquiler");
+		}
+		return posicion;
 	}
 }

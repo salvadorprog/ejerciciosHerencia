@@ -7,10 +7,10 @@ public class Alquiler {
 	private String apellidos;
 	private LocalDate fechainicio;
 	private LocalDate fechafin;
-	private int numeroTelefono;
+	private String numeroTelefono;
 	private Vehiculo vehiculo;
 	
-	public Alquiler(String nombre, String apellidos, LocalDate fechainicio, LocalDate fechafin, int numeroTelefono,
+	public Alquiler(String nombre, String apellidos, LocalDate fechainicio, LocalDate fechafin, String numeroTelefono,
 			Vehiculo vehiculo) {
 		super();
 		this.nombre = nombre;
@@ -53,11 +53,11 @@ public class Alquiler {
 		this.fechafin = fechafin;
 	}
 
-	public int getNumeroTelefono() {
+	public String getNumeroTelefono() {
 		return numeroTelefono;
 	}
 
-	public void setNumeroTelefono(int numeroTelefono) {
+	public void setNumeroTelefono(String numeroTelefono) {
 		this.numeroTelefono = numeroTelefono;
 	}
 
@@ -73,11 +73,6 @@ public class Alquiler {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((apellidos == null) ? 0 : apellidos.hashCode());
-		result = prime * result + ((fechafin == null) ? 0 : fechafin.hashCode());
-		result = prime * result + ((fechainicio == null) ? 0 : fechainicio.hashCode());
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + numeroTelefono;
 		result = prime * result + ((vehiculo == null) ? 0 : vehiculo.hashCode());
 		return result;
 	}
@@ -91,28 +86,6 @@ public class Alquiler {
 		if (getClass() != obj.getClass())
 			return false;
 		Alquiler other = (Alquiler) obj;
-		if (apellidos == null) {
-			if (other.apellidos != null)
-				return false;
-		} else if (!apellidos.equals(other.apellidos))
-			return false;
-		if (fechafin == null) {
-			if (other.fechafin != null)
-				return false;
-		} else if (!fechafin.equals(other.fechafin))
-			return false;
-		if (fechainicio == null) {
-			if (other.fechainicio != null)
-				return false;
-		} else if (!fechainicio.equals(other.fechainicio))
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		if (numeroTelefono != other.numeroTelefono)
-			return false;
 		if (vehiculo == null) {
 			if (other.vehiculo != null)
 				return false;
@@ -121,14 +94,13 @@ public class Alquiler {
 		return true;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Alquiler Matrícula: " + getVehiculo().getMatricula() + ", dias de alquiler: " + diasAlquiler() + ", precio alquiler: "
 				+ precioAlquiler() + "€";
 	}
 
-	public double diasAlquiler() {
+	public int diasAlquiler() {
 		return (int) ChronoUnit.DAYS.between(fechainicio,fechafin);
 	}
 	public double precioAlquiler() {
