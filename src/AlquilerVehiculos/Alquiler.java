@@ -11,12 +11,12 @@ public class Alquiler {
 	private Vehiculo vehiculo;
 	
 	public Alquiler(String nombre, String apellidos, LocalDate fechainicio, LocalDate fechafin, String numeroTelefono,
-			Vehiculo vehiculo) {
+			Vehiculo vehiculo) throws Exception {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechainicio = fechainicio;
-		this.fechafin = fechafin;
+		setFechafin(fechafin);
 		this.numeroTelefono = numeroTelefono;
 		this.vehiculo = vehiculo;
 	}
@@ -49,7 +49,10 @@ public class Alquiler {
 		return fechafin;
 	}
 
-	public void setFechafin(LocalDate fechafin) {
+	public void setFechafin(LocalDate fechafin) throws Exception{
+		if(fechafin.isBefore(fechainicio)) {
+			throw new Exception("La fecha de fin no puede ser anterior a la de inicio");
+		}
 		this.fechafin = fechafin;
 	}
 
