@@ -84,9 +84,9 @@ public class Jugador extends Elemento {
 	public String toString() {
 		return "Jugador con símbolo: " + simbolo;
 	}
-	public int nextCol(char elemento) {
+	public int nextCol(char direccion) {
 		int posicion = 0;
-		switch(elemento) {
+		switch(direccion) {
 			case 'N':{
 				posicion = col;
 				break;
@@ -117,9 +117,9 @@ public class Jugador extends Elemento {
 		return posicion;
 	}
 	
-	public int nextFil(char elemento) {			// Aun en proceso...
+	public int nextFil(char direccion) {			
 		int posicion = 0;
-		switch(elemento) {
+		switch(direccion) {
 			case 'N':{
 				if (fil + 1 == Constantes.ALTO) {
 					posicion = 0;
@@ -130,23 +130,26 @@ public class Jugador extends Elemento {
 				break;
 			}
 			case 'O':{
-				if (col != 0) {
-					posicion = col - 1;
-				}
-				else {
-					posicion = Constantes.ANCHO - 1;
-				}
-				break;
-			}
-			case 'S':{
 				posicion = col;
 				break;
 			}
+			case 'S':{
+				if ((fil - 1) < 0) {
+					posicion = Constantes.ALTO - 1;
+				}
+				else {
+					posicion = fil - 1;
+				}
+				break;
+			}
 			case 'E':{
-
+				posicion = col;
+				break;
 			}
 		}
 		return posicion;
-		
+	}
+	public String resumen() {
+		return "Jugador: " + simbolo + " Dinero: " + dinero + " Pociones: " + pociones + "Gemas: " + gemas;
 	}
 }
