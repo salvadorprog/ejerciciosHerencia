@@ -104,14 +104,23 @@ public class Juego {
 
 	@Override
 	public String toString() {
-		StringBuilder tablero = new StringBuilder();
+		Elemento elemento;
+		StringBuilder resultado = new StringBuilder();
 		for (int y = 0; y < alto; y++) {
-			tablero.append(barra());
+			resultado.append(barra());
 			for (int x = 0; x < alto; x++) {
-				tablero.append("|");
+				resultado.append("|");
+				elemento = tablero[x][y];
+				if (elemento.equals(null)) {
+					resultado.append(' ');
+				}
+				else {
+					resultado.append(elemento.toString());
+				}
 			} 
-			tablero.append("\n");
+			resultado.append("\n");
 		}
+		return resultado.toString();
 	}
 	
 	public boolean isTerminado() {
