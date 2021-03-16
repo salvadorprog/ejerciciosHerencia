@@ -10,10 +10,10 @@ public class Jugador extends Elemento {
 	private int pociones;
 	private int gemas;
 	
-	public Jugador(char simbolo, int fil, int col) {
+	public Jugador(char simbolo, int col, int fil) {
 		super(simbolo);
-		this.fil = fil;
 		this.col = col;
+		this.fil = fil;
 	}
 	
 	public int getFuerza() {

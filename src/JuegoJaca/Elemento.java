@@ -5,7 +5,7 @@ public abstract class Elemento {
 
 	@Override
 	public String toString() {
-		return "Elemento con símbolo: " + simbolo;
+		return Character.toString(simbolo);
 	}
 	
 	public Elemento(char simbolo) {
